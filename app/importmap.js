@@ -1,6 +1,5 @@
-export { render, h, html, useState, useReducer, useEffect, useMemo, useCallback, useRef, useContext, createContext } from "preact";
-export * from 'idb';
-export * from 'xlsx';
-export * from 'app/kit';
-export * from 'routes';
+export * from '../3rd/preact-standalone.js';
+export * from '../3rd/idb.js';
+export * from '../3rd/xlsx.js';
+export * from '../kit/js/bundle.js';
 export * from './data-management/bundle.js';
