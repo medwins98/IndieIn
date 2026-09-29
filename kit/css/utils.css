@@ -1,0 +1,752 @@
+/* --------------------------------------------------------------------------
+   1. COLORS & BACKGROUNDS
+   -------------------------------------------------------------------------- */
+.bg-app {
+    background-color: var(--bg-app);
+}
+
+.bg-surface {
+    background-color: var(--bg-surface);
+}
+
+.bg-subtle {
+    background-color: var(--bg-subtle);
+}
+
+.bg-hover {
+    background-color: var(--bg-hover);
+}
+
+.bg-success,
+.bg-green {
+    background-color: var(--color-success-light);
+}
+
+.bg-warning,
+.bg-yellow {
+    background-color: var(--color-warning-light);
+}
+
+.bg-danger,
+.bg-red {
+    background-color: var(--color-danger-light);
+}
+
+.bg-info,
+.bg-blue {
+    background-color: var(--color-info-light);
+}
+
+.bg-green-dark {
+    background-color: var(--color-success);
+}
+
+.bg-yellow-dark {
+    background-color: var(--color-warning);
+}
+
+.bg-red-dark {
+    background-color: var(--color-danger);
+}
+
+.bg-blue-dark {
+    background-color: var(--color-info);
+}
+
+.color-success,
+.color-green {
+    color: var(--color-success);
+}
+
+.color-warning,
+.color-yellow {
+    color: var(--color-warning);
+}
+
+.color-danger,
+.color-red {
+    color: var(--color-danger);
+}
+
+.color-info,
+.color-blue {
+    color: var(--color-info);
+}
+
+.text-primary {
+    color: var(--text-primary);
+}
+
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.text-inverse {
+    color: var(--text-inverse);
+}
+
+/* --------------------------------------------------------------------------
+   2. TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.text-xs {
+    font-size: var(--font-size-xs);
+}
+
+.text-sm {
+    font-size: var(--font-size-sm);
+}
+
+.text-base {
+    font-size: var(--font-size-base);
+}
+
+.text-md {
+    font-size: var(--font-size-md);
+}
+
+.text-lg {
+    font-size: var(--font-size-lg);
+}
+
+.text-xl {
+    font-size: var(--font-size-xl);
+}
+
+.fw1 {
+    font-weight: 100;
+}
+
+.fw2 {
+    font-weight: 200;
+}
+
+.fw3 {
+    font-weight: 300;
+}
+
+.fw4 {
+    font-weight: 400;
+}
+
+.fw5 {
+    font-weight: 500;
+}
+
+.fw6 {
+    font-weight: 600;
+}
+
+.fw7 {
+    font-weight: 700;
+}
+
+.fw8 {
+    font-weight: 800;
+}
+
+.fw9 {
+    font-weight: 900;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.text-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   3. FLEXBOX & GRID LAYOUT
+   -------------------------------------------------------------------------- */
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.align-center,
+.flex-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.flex-split {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-split.first-fill> :first-child,
+.flex-split.second-fill> :nth-child(2),
+.flex-split.last-fill> :last-child {
+    flex: 1;
+}
+
+.gap0 {
+    gap: 0rem;
+}
+
+.gap025 {
+    gap: 0.25rem;
+}
+
+.gap05 {
+    gap: 0.5rem;
+}
+
+.gap075 {
+    gap: 0.75rem;
+}
+
+.gap0875 {
+    gap: 0.875rem;
+}
+
+.gap1 {
+    gap: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. SPACING: MARGIN (Logical Property Based)
+   -------------------------------------------------------------------------- */
+/* Margin Top / Block Start */
+.mt0,
+.mb-start-0 {
+    margin-block-start: 0rem;
+}
+
+.mt025,
+.mb-start-025 {
+    margin-block-start: 0.25rem;
+}
+
+.mt05,
+.mb-start-05 {
+    margin-block-start: 0.5rem;
+}
+
+.mt075,
+.mb-start-075 {
+    margin-block-start: 0.75rem;
+}
+
+.mt0875,
+.mb-start-0875 {
+    margin-block-start: 0.875rem;
+}
+
+.mt1,
+.mb-start-1 {
+    margin-block-start: 1rem;
+}
+
+/* Margin Bottom / Block End */
+.mb0,
+.mb-end-0 {
+    margin-block-end: 0rem;
+}
+
+.mb025,
+.mb-end-025 {
+    margin-block-end: 0.25rem;
+}
+
+.mb05,
+.mb-end-05 {
+    margin-block-end: 0.5rem;
+}
+
+.mb075,
+.mb-end-075 {
+    margin-block-end: 0.75rem;
+}
+
+.mb0875,
+.mb-end-0875 {
+    margin-block-end: 0.875rem;
+}
+
+.mb1,
+.mb-end-1 {
+    margin-block-end: 1rem;
+}
+
+.mb1125,
+.mb-end-1125 {
+    margin-block-end: 1.125rem;
+}
+
+.mb125,
+.mb-end-125 {
+    margin-block-end: 1.25rem;
+}
+
+/* Margin Left / Inline Start */
+.ml0,
+.ms0 {
+    margin-inline-start: 0rem;
+}
+
+.ml025,
+.ms025 {
+    margin-inline-start: 0.25rem;
+}
+
+.ml05,
+.ms05 {
+    margin-inline-start: 0.5rem;
+}
+
+.ml075,
+.ms075 {
+    margin-inline-start: 0.75rem;
+}
+
+.ml0875,
+.ms0875 {
+    margin-inline-start: 0.875rem;
+}
+
+.ml1,
+.ms1 {
+    margin-inline-start: 1rem;
+}
+
+.ml-auto,
+.ms-auto {
+    margin-inline-start: auto;
+}
+
+/* Margin Right / Inline End */
+.mr0,
+.me0 {
+    margin-inline-end: 0rem;
+}
+
+.mr025,
+.me025 {
+    margin-inline-end: 0.25rem;
+}
+
+.mr05,
+.me05 {
+    margin-inline-end: 0.5rem;
+}
+
+.mr075,
+.me075 {
+    margin-inline-end: 0.75rem;
+}
+
+.mr0875,
+.me0875 {
+    margin-inline-end: 0.875rem;
+}
+
+.mr1,
+.me1 {
+    margin-inline-end: 1rem;
+}
+
+.mr-auto,
+.me-auto {
+    margin-inline-end: auto;
+}
+
+/* Margin Axis */
+.mx0 {
+    margin-inline: 0rem;
+}
+
+.mx025 {
+    margin-inline: 0.25rem;
+}
+
+.mx05 {
+    margin-inline: 0.5rem;
+}
+
+.mx075 {
+    margin-inline: 0.75rem;
+}
+
+.mx1 {
+    margin-inline: 1rem;
+}
+
+.mx-auto {
+    margin-inline: auto;
+}
+
+.my0 {
+    margin-block: 0rem;
+}
+
+.my025 {
+    margin-block: 0.25rem;
+}
+
+.my05 {
+    margin-block: 0.5rem;
+}
+
+.my075 {
+    margin-block: 0.75rem;
+}
+
+.my1 {
+    margin-block: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. SPACING: PADDING (Logical Property Based)
+   -------------------------------------------------------------------------- */
+/* Padding Top / Block Start */
+.pt0 {
+    padding-block-start: 0;
+}
+
+.pt025 {
+    padding-block-start: 0.25rem;
+}
+
+.pt05 {
+    padding-block-start: 0.5rem;
+}
+
+.pt075 {
+    padding-block-start: 0.75rem;
+}
+
+.pt0875 {
+    padding-block-start: 0.875rem;
+}
+
+.pt1 {
+    padding-block-start: 1rem;
+}
+
+/* Padding Bottom / Block End */
+.pb0 {
+    padding-block-end: 0;
+}
+
+.pb025 {
+    padding-block-end: 0.25rem;
+}
+
+.pb05 {
+    padding-block-end: 0.5rem;
+}
+
+.pb075 {
+    padding-block-end: 0.75rem;
+}
+
+.pb0875 {
+    padding-block-end: 0.875rem;
+}
+
+.pb1 {
+    padding-block-end: 1rem;
+}
+
+/* Padding Left / Inline Start */
+.pl0,
+.ps0 {
+    padding-inline-start: 0;
+}
+
+.pl025,
+.ps025 {
+    padding-inline-start: 0.25rem;
+}
+
+.pl05,
+.ps05 {
+    padding-inline-start: 0.5rem;
+}
+
+.pl075,
+.ps075 {
+    padding-inline-start: 0.75rem;
+}
+
+.pl0875,
+.ps0875 {
+    padding-inline-start: 0.875rem;
+}
+
+.pl1,
+.ps1 {
+    padding-inline-start: 1rem;
+}
+
+/* Padding Right / Inline End */
+.pr0,
+.pe0 {
+    padding-inline-end: 0;
+}
+
+.pr025,
+.pe025 {
+    padding-inline-end: 0.25rem;
+}
+
+.pr05,
+.pe05 {
+    padding-inline-end: 0.5rem;
+}
+
+.pr075,
+.pe075 {
+    padding-inline-end: 0.75rem;
+}
+
+.pr0875,
+.pe0875 {
+    padding-inline-end: 0.875rem;
+}
+
+.pr1,
+.pe1 {
+    padding-inline-end: 1rem;
+}
+
+/* Padding Axis & Header Tokens */
+.px0 {
+    padding-inline: 0;
+}
+
+.px025 {
+    padding-inline: 0.25rem;
+}
+
+.px05 {
+    padding-inline: 0.5rem;
+}
+
+.px075 {
+    padding-inline: 0.75rem;
+}
+
+.px1 {
+    padding-inline: 1rem;
+}
+
+.px {
+    padding-inline: var(--padding-x-header);
+}
+
+.py0 {
+    padding-block: 0;
+}
+
+.py025 {
+    padding-block: 0.25rem;
+}
+
+.py05 {
+    padding-block: 0.5rem;
+}
+
+.py075 {
+    padding-block: 0.75rem;
+}
+
+.py1 {
+    padding-block: 1rem;
+}
+
+.py {
+    padding-block: var(--padding-y-header);
+}
+
+.pxy {
+    padding: var(--padding-y-header) var(--padding-x-header);
+}
+
+/* --------------------------------------------------------------------------
+   6. SIZES, BORDERS & SHAPES
+   -------------------------------------------------------------------------- */
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.w-vw {
+    width: 100vw;
+}
+
+.h-vh {
+    height: 100vh;
+    height: 100dvh;
+}
+
+.radius-xs {
+    border-radius: var(--radius-xs);
+}
+
+.radius-sm {
+    border-radius: var(--radius-sm);
+}
+
+.radius-md {
+    border-radius: var(--radius-md);
+}
+
+.radius-lg {
+    border-radius: var(--radius-lg);
+}
+
+.pill {
+    border-radius: var(--radius-pill);
+}
+
+.noborder {
+    border-width: 0px;
+}
+
+/* --------------------------------------------------------------------------
+   7. POSITIONING, OVERFLOW & DISPLAY UTILITIES
+   -------------------------------------------------------------------------- */
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.fixed {
+    position: fixed;
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.interactive {
+    position: fixed;
+    z-index: 97;
+}
+
+.interactive.top {
+    top: 0;
+}
+
+.interactive.left {
+    left: 0;
+}
+
+.interactive.right {
+    right: 0;
+}
+
+.interactive.bottom {
+    bottom: 0;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.overflow-auto {
+    overflow: auto;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
+}
+
+.overflow-y-auto {
+    overflow-y: auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.select-none {
+    user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   8. MATCH PATTERNS & COMPONENT HEADERS
+   -------------------------------------------------------------------------- */
+.primary-match {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color-primary);
+    color: var(--text-secondary);
+}
+
+.secondary-match {
+    background-color: var(--bg-subtle);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color-primary);
+}
