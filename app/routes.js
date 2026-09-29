@@ -1,6 +1,4 @@
-import { h, html } from 'importmap';
-
-export const ROUTES_MAP = [
+const ROUTES_MAP = [
 	{
 		path: '/',
 		title: 'Home',
