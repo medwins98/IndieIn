@@ -5,7 +5,7 @@
 /* Form */ import { initFormBlueprint } from 'importmap';
 /* I18n */ import { I18nProvider } from 'importmap';
 import { ROUTES_MAP } from 'importmap';
-import { PortalApp } from 'app/portal';
+import { PortalApp } from './portal.js';
 
 await setupDB(IDB_CONFIG);
 initRoutesMap(ROUTES_MAP);
