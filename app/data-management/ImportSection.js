@@ -3,7 +3,7 @@
 /* Form */ import { FormFieldSelect } from 'importmap';
 /* Reusable */ import { Fragment, SectionHeader, TabComponent } from 'importmap';
 /* I18n */ import { useI18n } from 'importmap';
-import * as XLSX from 'xlsx';
+import * as XLSX from 'importmap';
 
 export function ImportSection({ targetColumns = [], onImportData })
 {
