@@ -4,7 +4,6 @@
 /* DB */ import { setupDB, useIDB } from 'importmap';
 /* Form */ import { initFormBlueprint } from 'importmap';
 /* I18n */ import { I18nProvider } from 'importmap';
-import { ROUTES_MAP } from 'importmap';
 import { PortalApp } from 'https://cdn.jsdelivr.net/gh/medwins98/IndieIn@880fc1c7320a8c68de3f3f84f5cc07af415357ab/app/portal.js';
 
 await setupDB(IDB_CONFIG);
