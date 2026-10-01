@@ -1,7 +1,7 @@
 import { html, useState, useEffect, useCallback, useRef, useMemo } from 'importmap';
 import { ListItem, ListItemContent, ListItemPrefix, ListItemSuffix, ImageWrapper, SectionHeader, ReportBar, BtnIcon, Icon, Fragment } from 'importmap';
-import { useData, useTransactionState, useTransactionActions } from 'importmap';
-import { useI18n } from 'importmap';
+import { useTransactionState, useTransactionActions } from 'pos';
+import { useData, useI18n } from 'importmap';
 
 export function TransactionSection()
 {

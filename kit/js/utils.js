@@ -1,6 +1,20 @@
 const logg = (log) => console.log(JSON.stringify(log, "", 2));
 const alertt = (log) => alert(JSON.stringify(log, "", 2));
 
+function loadCSS(href) {
+	return new Promise((resolve, reject) => {
+		let link = document.querySelector(`link[href="${href}"]`);
+		if (link) return resolve(link);
+
+		link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.href = href;
+		link.onload = () => resolve(link);
+		link.onerror = () => reject(new Error(`Failed to load CSS: ${href}`));
+		document.head.appendChild(link);
+	});
+}
+
 const clipboard = {
 	async copy(source) {
 		let text = '';

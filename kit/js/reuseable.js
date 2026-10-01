@@ -130,13 +130,31 @@ function TabContent({ children, selected })
 
 export function ImageWrapper({ imgSrc = null, imgText = "No Image", imgClass = '', imgWidth = 160, imgHeight = 160, statusIndicator = null, labelText = null, children, className = '', ...attributes })
 {
-	return html`
-		<div class="img-wrapper ${className}" ...${attributes}>
-			<img src=${imgSrc ? imgSrc : generateSVGImage(imgText, imgWidth, imgHeight)} class="img ${imgClass}" />
-			${statusIndicator ? html`<span class="status-indicator ${statusIndicator}"></span>` : null}
-			${labelText ? html`<span class="img-label">${labelText}</span>` : null}
-			${children}
-		</div>`;
+	let finalSrc = null;
+
+    if (imgSrc) {
+        if (typeof imgSrc === 'string') {
+            finalSrc = imgSrc;
+        }
+		else if (imgSrc instanceof Blob || imgSrc instanceof File) {
+            finalSrc = URL.createObjectURL(imgSrc);
+        }
+		else if (imgSrc.fileData) {
+            finalSrc = URL.createObjectURL(imgSrc.fileData);
+        }
+    }
+
+    if (!finalSrc) {
+        finalSrc = generateSVGImage(imgText, imgWidth, imgHeight);
+    }
+
+    return html`
+        <div class="img-wrapper ${className}" ...${attributes}>
+            <img src=${finalSrc} class="img ${imgClass}" />
+            ${statusIndicator ? html`<span class="status-indicator ${statusIndicator}"></span>` : null}
+            ${labelText ? html`<span class="img-label">${labelText}</span>` : null}
+            ${children}
+        </div>`;
 }
 
 export function ListItem({ children, className = '', ...attributes })

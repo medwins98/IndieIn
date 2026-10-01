@@ -1,7 +1,7 @@
 import { html, useState, useCallback, useEffect, useMemo } from 'importmap';
-import { useData, useTransactionActions } from 'importmap';
+import { useTransactionActions } from 'pos';
 import { ListItem, ListItemPrefix, ListItemContent, ListItemSuffix, ImageWrapper, Badge, Fragment, DropdownMenu, TabComponent, ToggleScanner, ButtonToggle, BtnIcon, Icon } from 'importmap';
-import { useI18n } from 'importmap';
+import { useData, useI18n } from 'importmap';
 
 export function CatalogSection({ cardSettings })
 {
@@ -101,7 +101,7 @@ export function CatalogSection({ cardSettings })
 						onClick=${() => addToCart(prod)} >
 
 						<${ListItemPrefix}>
-							<${ImageWrapper} imgSrc=${prod?.img} imgText=${prod.name} />
+							<${ImageWrapper} imgSrc=${prod?.imgFile} imgText=${prod.name} />
 						<//>
 
 						<${ListItemContent} 

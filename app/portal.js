@@ -6,19 +6,13 @@
 /* Device */ import { useDevice, ToggleScanner, getCurrentLocation, useGeolocation } from 'importmap';
 /* I18n */ import { useI18n, getTranslatedFormSchema } from 'importmap';
 /* Admin */ import { DataApp, getAllDatabasesAndStores } from 'importmap';
+import { POSApp } from './main.js';
 
 const SIDEBAR_ADMIN = [
-	{ label: 'branches', href: '/app/panel/branch' },
-	{ label: 'warehouse', href: '/app/panel/warehouse' },
+	{ label: 'common.pos', href: '/app/pos' },
 	{ label: 'nav.products', href: '/app/panel/product' },
 	{ label: 'nav.payments', href: '/app/panel/payment' },
-	{ label: 'nav.pricing', href: '/app/panel/pricing' },
-	{ label: 'nav.promos', href: '/app/panel/promos' },
-	{ label: 'customers', href: '/app/panel/customer' },
-	{ label: 'employees', href: '/app/panel/employee' },
-	{ label: 'orders', href: '/app/panel/order' },
 	{ label: 'transactions', href: '/app/panel/transaction' },
-	{ label: 'access_rights', href: '/app/panel/access' },
 	{
 		label: 'settings',
 		child: [
@@ -31,7 +25,7 @@ export function PortalApp({ ...pageInfo })
 {
 	const { t } = useI18n();
 	const { toggle } = useUI();
-	const { key, title, params } = pageInfo || {};
+	const { title, params } = pageInfo || {};
 	const { serviceName, module, submodule } = params || {};
 
 	useEffect(() => {
@@ -41,6 +35,9 @@ export function PortalApp({ ...pageInfo })
 	const CurrentComponent = useMemo(() => {
 		if(serviceName === undefined) {
 			return html`<${AppIndex} />`;
+		}
+		else if(serviceName === 'pos') {
+			return html`<${POSApp} />`;
 		}
 		else if(serviceName === 'panel')
 		{
@@ -52,10 +49,9 @@ export function PortalApp({ ...pageInfo })
 			}
 		}
 		else {
-			return html`
-				<${DataApp} title="Data Playground" standalone=${true} />`;
+			return html`<${DataApp} title="Data Playground" standalone=${true} />`;
 		}
-	}, [serviceName, module, submodule]);
+	}, [serviceName, module, submodule, title]);
 	
 	return html`
 		<header class="header">
@@ -80,14 +76,14 @@ function AppIndex()
 {
 	return html`
 		<div class="grid-small-box-menu">
-			<${Link} href="/app/panel" class="item">
+			<${Link} href="/app/panel/product" class="item">
 				<div class="item-icon">A</div>
 				<div class="item-label">Admin</div>
 			<//>
-			<a href="/webapp/app/pos" class="item">
+			<${Link} href="/app/pos" class="item">
 				<div class="item-icon">P</div>
 				<div class="item-label">POS</div>
-			</a>
+			<//>
 			<${Link} href="/app/data-playground" class="item">
 				<div class="item-icon">D</div>
 				<div class="item-label">Data</div>

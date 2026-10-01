@@ -1,5 +1,5 @@
 import { html, useState, useEffect } from 'importmap';
-import { POS_SETTINGS, useTransactionState, useTransactionActions, calculateCart } from 'importmap';
+import { POS_SETTINGS, useTransactionState, useTransactionActions, calculateCart } from 'pos';
 import { ListItem, ListItemContent, ListItemSuffix, Fragment, SectionHeader, TabComponent, CodeQR, useUI, ButtonToggle, Icon, InteractiveContainer } from 'importmap';
 import { useI18n } from 'importmap';
 

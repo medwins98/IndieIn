@@ -98,8 +98,8 @@ export function DataView({
 	}, [onDelete, t]);
 
 	return html`
-		<main class="flex-column gap1 pxy">
-			<div class="flex-split">
+		<div class="w-full flex-column gap1">
+			<div class="flex-split pxy">
 				<div class="section-title text-ellipsis">${title}</div>
 				<${ActionBar}
 					isSelectMode=${isSelectMode}
@@ -116,7 +116,7 @@ export function DataView({
 				/>
 			</div>
 
-			<${InteractiveContainer} id="import" className="widget quickview" keepMounted=${true}>
+			<${InteractiveContainer} id="import" className="quickview" keepMounted=${true}>
 				${children}
 			<//>
 
@@ -142,7 +142,7 @@ export function DataView({
 				onUpdate=${handleUpdate}
 				onDelete=${confirmDelete}
 			/>
-		</main>`;
+		</div>`;
 }
 
 function ActionBar({ isSelectMode, onToggleSelectMode, selectedCount, onCreate, onUpdate, onDelete, onExport, showSelect = false, showExport = true, showImport = true, showFilter = true, showCreate = true })
