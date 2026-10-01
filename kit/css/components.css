@@ -159,9 +159,7 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-
-	.desktop-nav,
-	.desktop-only {
+	.desktop-nav, .desktop-only {
 		display: none;
 	}
 
@@ -518,27 +516,13 @@ tr:hover td {
 	 TAB
 	 ========================================== */
 
-.tab-container.type-full {
+.tab-container.full {
 	display: flex;
 }
 
-.tab-container.type-full>button {
+.tab-container.full>button {
 	flex: 1;
 	border-radius: 0;
-}
-
-.tab-container.type-border-bottom {
-	border-bottom: 2px solid var(--border-color-primary);
-}
-
-.tab-container.type-border-bottom button {
-	border-width: 0;
-	border-radius: 0;
-	background: transparent;
-}
-
-.tab-container.type-border-bottom button.active {
-	border-width: 0 0 2px 0;
 }
 
 /* ===============================================
@@ -889,7 +873,7 @@ svg {
 }
 
 /* ===============================================
-   Image Wrapper Base
+   Image Wrapper
    =============================================== */
 .img-wrapper {
 	margin: 0;

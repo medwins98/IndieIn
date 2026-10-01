@@ -25,9 +25,9 @@ export function SectionHeader({ title = "Title", subtitle = null, children })
 		</div>`;
 }
 
-export function NavSidebar({ list = null, Link, translate = (val) => val })
+export function NavSidebar({ list = [], Link, translate = (val) => val })
 {
-	if(!Array.isArray(list)) return null;
+	if(!Array.isArray(list) && list.length === 0) return null;
 
 	return html`
 		<nav class="section sidebar">
@@ -37,13 +37,14 @@ export function NavSidebar({ list = null, Link, translate = (val) => val })
 		</nav>`;
 }
 
-function NavSidebarList({ list = null, Link, translate = (val) => val })
+function NavSidebarList({ list, Link, translate = (val) => val })
 {
 	if(!list.child) {
 		return html`
 			<li class="nav-item">
 				<${Link} href=${list.href} class="nav-link">${translate(list.label)}<//>
-			</li>`
+			</li>
+		`
 	}
 	else {
 		return html`
@@ -91,7 +92,7 @@ export function DropdownMenu({ children })
 		</div>`;
 }
 
-export function TabComponent({ list = [], selected = list[0], onChange = null, baseClass = "btn-primary", activeClass="active btn-secondary-brand", children, withContent = false, className, ...attributes })
+export function TabComponent({ list = [], selected = list[0], onChange = null, baseClass = "btn-primary", activeClass="active btn-secondary-brand", children, withContent = false, className = '', ...attributes })
 {
 	const [activeTab, setActiveTab] = useState(selected);
 
@@ -127,18 +128,18 @@ function TabContent({ children, selected })
 	return html`<${children.type} ...${outerProps}>${selectedInner}<//>`;
 }
 
-export function ImageWrapper({ imgSrc = null, imgText = "No Image", imgClass = '', statusIndicator = null, labelText = null, children, className = '', ...attributes })
+export function ImageWrapper({ imgSrc = null, imgText = "No Image", imgClass = '', imgWidth = 160, imgHeight = 160, statusIndicator = null, labelText = null, children, className = '', ...attributes })
 {
 	return html`
 		<div class="img-wrapper ${className}" ...${attributes}>
-			<img src=${imgSrc ? imgSrc : generateSVGImage(imgText, 160, 160)} class="img ${imgClass}" />
+			<img src=${imgSrc ? imgSrc : generateSVGImage(imgText, imgWidth, imgHeight)} class="img ${imgClass}" />
 			${statusIndicator ? html`<span class="status-indicator ${statusIndicator}"></span>` : null}
 			${labelText ? html`<span class="img-label">${labelText}</span>` : null}
 			${children}
 		</div>`;
 }
 
-export function ListItem({ children, className, ...attributes })
+export function ListItem({ children, className = '', ...attributes })
 {
 	let prefix = null
 	let suffix = null
@@ -178,7 +179,7 @@ export function ListItemContent({ title = 'Title', description = null, badgeText
 		</div>`;
 }
 
-export function ListItemPrefix({ children, className, ...attributes })
+export function ListItemPrefix({ children, className = '', ...attributes })
 {
 	return html`
 		<div class="list-item-addon ${className}" ...${attributes}>
@@ -186,7 +187,7 @@ export function ListItemPrefix({ children, className, ...attributes })
 		</div>`
 }
 
-export function ListItemSuffix({ children, className, ...attributes })
+export function ListItemSuffix({ children, className = '', ...attributes })
 {
 	return html`
 		<div class="flex-split list-item-addon ${className}" ...${attributes}>
@@ -194,7 +195,7 @@ export function ListItemSuffix({ children, className, ...attributes })
 		</div>`
 }
 
-export function Badge({ className, text, children, ...attributes})
+export function Badge({ text, children, className = '', ...attributes})
 {
 	return html`
 		<sup class="badge ${className}" ...${attributes}>
@@ -246,96 +247,7 @@ export function CodeQR({ rawCode = null, qrisInfo })
 	`;
 }
 
-export function DraggableItem({ items, setItems, renderItem, getKey = (item) => item.id, handleClass = "drag-handle" })
-{
-	const [draggingKey, setDraggingKey] = useState(null);
-	const [dragOverKey, setDragOverKey] = useState(null);
-	const dragItem = useRef(null);
-
-	const handleSort = (fromIndex, toIndex) => {
-		if(fromIndex === toIndex) return;
-		setItems(prev => {
-			const newItems = [...prev];
-			const [dragged] = newItems.splice(fromIndex, 1);
-			newItems.splice(toIndex, 0, dragged);
-			return newItems;
-		});
-	};
-
-	const getIndexByKey = (key) => items.findIndex(i => getKey(i) === key);
-
-	// Mouse props go on the whole row
-	const rowProps = (item) => {
-		const key = getKey(item);
-		return {
-			draggable: true,
-			'data-key': key,
-			onDragStart: (e) => {
-				dragItem.current = key;
-				setDraggingKey(key);
-				e.dataTransfer.effectAllowed = 'move';
-			},
-			onDragOver: (e) => {
-				e.preventDefault();
-				setDragOverKey(key);
-			},
-			onDragLeave: () => setDragOverKey(null),
-			onDrop: (e) => {
-				e.preventDefault();
-				if(dragItem.current!== null) {
-					handleSort(getIndexByKey(dragItem.current), getIndexByKey(key));
-				}
-			},
-			onDragEnd: () => {
-				dragItem.current = null;
-				setDraggingKey(null);
-				setDragOverKey(null);
-			},
-			className: [
-				'draggable-row',
-				draggingKey === key && 'is-dragging',
-				dragOverKey === key && 'drag-over'
-			].filter(Boolean).join(' ')
-		}
-	};
-
-	// Touch props go only on the handle
-	const handleProps = (item) => {
-		const key = getKey(item);
-		return {
-			className: handleClass,
-			onTouchStart: () => {
-				dragItem.current = key;
-				setDraggingKey(key);
-			},
-			onTouchMove: (e) => {
-				e.preventDefault();
-				const touch = e.touches[0];
-				const el = document.elementFromPoint(touch.clientX, touch.clientY);
-				const overKey = el?.closest('.draggable-row')?.dataset.key;
-				if(overKey) setDragOverKey(overKey);
-			},
-			onTouchEnd: (e) => {
-				const touch = e.changedTouches[0];
-				const el = document.elementFromPoint(touch.clientX, touch.clientY);
-				const dropKey = el?.closest('.draggable-row')?.dataset.key;
-				if(dropKey && dragItem.current!== null) {
-					handleSort(getIndexByKey(dragItem.current), getIndexByKey(dropKey));
-				}
-				dragItem.current = null;
-				setDraggingKey(null);
-				setDragOverKey(null);
-			}
-		}
-	};
-
-	return html`
-		<div class="draggable-container flex-column gap05">
-			${items.map(item => renderItem(item, { rowProps: rowProps(item), handleProps: handleProps(item) }))}
-		</div>`;
-}
-
-export function Code({ data })
+export function Code({ data, stringify = true })
 {
 	const elRef = useRef(null);
 	const elInputRef = useRef(null);
@@ -356,13 +268,13 @@ export function Code({ data })
 					</button>
 				</div>
 			</div>
-			<pre ref=${elRef} class="code-content" contentEditable="true">${JSON.stringify(data, "", 2)}</pre>
+			<textarea ref=${elRef} class="code-content" contentEditable="true">${stringify ? JSON.stringify(data, "", 2) : data}</textarea>
 		</div>`;
 }
 
 /**
  * TableContainer Component
- * Table wrapper rendering multi-select header checkboxes, dynamic columns, and row items.
+ * Table wrapper rendering multi-select header checkboxes, dynamic columns, row items, and row actions.
  */
 export function TableContainer({
 	data,
@@ -507,4 +419,93 @@ export function TableRowBody({ data, columns, dataIndex, rowId, isSelectMode, is
 			${columns.map(item => html`<td>${formatCellValue(data[item.id], item?.format)}</td>`)}
 			${children}
 		</tr>`;
+}
+
+export function DraggableItem({ items, setItems, renderItem, getKey = (item) => item.id, handleClass = "drag-handle" })
+{
+	const [draggingKey, setDraggingKey] = useState(null);
+	const [dragOverKey, setDragOverKey] = useState(null);
+	const dragItem = useRef(null);
+
+	const handleSort = (fromIndex, toIndex) => {
+		if(fromIndex === toIndex) return;
+		setItems(prev => {
+			const newItems = [...prev];
+			const [dragged] = newItems.splice(fromIndex, 1);
+			newItems.splice(toIndex, 0, dragged);
+			return newItems;
+		});
+	};
+
+	const getIndexByKey = (key) => items.findIndex(i => getKey(i) === key);
+
+	// Mouse props go on the whole row
+	const rowProps = (item) => {
+		const key = getKey(item);
+		return {
+			draggable: true,
+			'data-key': key,
+			onDragStart: (e) => {
+				dragItem.current = key;
+				setDraggingKey(key);
+				e.dataTransfer.effectAllowed = 'move';
+			},
+			onDragOver: (e) => {
+				e.preventDefault();
+				setDragOverKey(key);
+			},
+			onDragLeave: () => setDragOverKey(null),
+			onDrop: (e) => {
+				e.preventDefault();
+				if(dragItem.current!== null) {
+					handleSort(getIndexByKey(dragItem.current), getIndexByKey(key));
+				}
+			},
+			onDragEnd: () => {
+				dragItem.current = null;
+				setDraggingKey(null);
+				setDragOverKey(null);
+			},
+			className: [
+				'draggable-row',
+				draggingKey === key && 'is-dragging',
+				dragOverKey === key && 'drag-over'
+			].filter(Boolean).join(' ')
+		}
+	};
+
+	// Touch props go only on the handle
+	const handleProps = (item) => {
+		const key = getKey(item);
+		return {
+			className: handleClass,
+			onTouchStart: () => {
+				dragItem.current = key;
+				setDraggingKey(key);
+			},
+			onTouchMove: (e) => {
+				e.preventDefault();
+				const touch = e.touches[0];
+				const el = document.elementFromPoint(touch.clientX, touch.clientY);
+				const overKey = el?.closest('.draggable-row')?.dataset.key;
+				if(overKey) setDragOverKey(overKey);
+			},
+			onTouchEnd: (e) => {
+				const touch = e.changedTouches[0];
+				const el = document.elementFromPoint(touch.clientX, touch.clientY);
+				const dropKey = el?.closest('.draggable-row')?.dataset.key;
+				if(dropKey && dragItem.current!== null) {
+					handleSort(getIndexByKey(dragItem.current), getIndexByKey(dropKey));
+				}
+				dragItem.current = null;
+				setDraggingKey(null);
+				setDragOverKey(null);
+			}
+		}
+	};
+
+	return html`
+		<div class="draggable-container flex-column gap05">
+			${items.map(item => renderItem(item, { rowProps: rowProps(item), handleProps: handleProps(item) }))}
+		</div>`;
 }

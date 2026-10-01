@@ -188,8 +188,8 @@ function ActionBar({ isSelectMode, onToggleSelectMode, selectedCount, onCreate, 
 						<span class="btn-text hide-text">${t('export')}</span>
 					<//>
 					<${Fragment}>
-						<button onClick=${() => onExport('json')} class="menu-item" type="button">JSON</button>
-						<button onClick=${() => onExport('sheet')} class="menu-item" type="button">Excel</button>
+						<button onClick=${() => onExport('json')} type="button">JSON</button>
+						<button onClick=${() => onExport('sheet')} type="button">Excel</button>
 					<//>
 				<//>
 			`}

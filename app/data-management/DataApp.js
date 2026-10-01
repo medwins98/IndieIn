@@ -200,7 +200,7 @@ export function DataApp({ standalone = false, idbStore = null, apiEndpoint = nul
 		<//>
 
 		<${InteractiveContainer} id="form" className="quickview">
-			<div class="section form">
+			<section class="section form">
 				<${SectionHeader} title=${isUpdateBulk ? t('data.form.title.update_bulk') : formSchema?.formTitle}>
 					<${ButtonToggle} icon="close" targetId="form" forceState=${false} />
 				<//>
@@ -216,7 +216,7 @@ export function DataApp({ standalone = false, idbStore = null, apiEndpoint = nul
 							onFormSubmit=${isUpdate ? handleSaveUpdate : handleCreate} />`
 					}
 				</div>
-			</div>
+			</section>
 		<//>
 	`;
 }

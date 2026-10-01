@@ -104,7 +104,7 @@ export function ImportSection({ targetColumns = [], onImportData })
 					<${TabComponent}
 						list=${sourceTabList}
 						onChange=${(tabVal) => setTab(sourceTabList.indexOf(tabVal))}
-						className="type-full"
+						className="full"
 						withContent=${true} >
 	
 						<${Fragment}>
@@ -113,7 +113,7 @@ export function ImportSection({ targetColumns = [], onImportData })
 							<span>${t('fetch')}</span>
 						<//>
 						
-						<div className="pxy">
+						<div className="px mt1">
 							<div class="form-field-group">
 								<label class="form-label" for="file">Upload File</label>
 								<input type="file" name="file" accept=".json,.csv,.txt,.xlsx,.xls" />
@@ -139,7 +139,7 @@ export function ImportSection({ targetColumns = [], onImportData })
 				</form>
 
 				${parsedData && html`
-					<div class="flex-column gap1 px" style="border-top: 1px solid var(--border-color, #eee); padding-top: 1rem;">
+					<div class="flex-column gap1 px pt1" style="border-top: 1px solid var(--border-color, #eee);">
 						<div class="flex gap05">
 							<div class="form-field-group" style="flex:1;">
 								<label class="form-label" for="importMode">${t('data.import_mode')}</label>
@@ -221,7 +221,7 @@ function FieldMappingManager({ sourceKeys = [], targetColumns = [], mapping = {}
 					const mappedTarget = mapping[sourceKey] || '';
 					return html`
 						<div key=${sourceKey} class="draggable-row flex-split gap05">
-							<div class="import-source-key text-ellipsis" style="flex: 1; font-weight: 500;">
+							<div class="import-source-key text-ellipsis fw5" style="flex: 1">
 								${sourceKey}
 							</div>
 							<div style="flex-shrink: 0; padding: 0 4px;">➔</div>

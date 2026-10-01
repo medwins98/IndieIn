@@ -46,7 +46,7 @@ export function FiltersSection({ columns = [], options, setColumns, onFilter })
 				<${ButtonToggle} targetId="filter" icon="close" class="btn btn-icon" data-tooltip=${t('close')} />
 			<//>
 			<div class="section-content-wrapper flex-column gap1">
-				<${TabComponent} list=${TABS_TABLE_CONTROL} className="type-full" withContent=${true}>
+				<${TabComponent} list=${TABS_TABLE_CONTROL} className="full" withContent=${true}>
 					<${Fragment}>
 						<span>${t('data.search_by')} (${filterCount})</span>
 						<span>${t('data.sort_by')} (${sortCount})</span>

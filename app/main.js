@@ -1,10 +1,10 @@
 /* Preact Core */ import { render, h, html, useEffect, useState, useCallback, useMemo, useRef } from 'importmap';
-/* UI */ import { useUI, LoadingBar, Spinner, InteractiveContainer, ButtonToggle } from 'importmap';
+/* UI */ import { useUI, Code, LoadingBar, Spinner, InteractiveContainer, ButtonToggle } from 'importmap';
 /* Navigation */ import { initRoutesMap, NavigationProvider, useNavigationState, Link } from 'importmap';
 /* DB */ import { setupDB, useIDB } from 'importmap';
 /* Form */ import { initFormBlueprint } from 'importmap';
 /* I18n */ import { I18nProvider } from 'importmap';
-import { PortalApp } from 'https://cdn.jsdelivr.net/gh/medwins98/IndieIn@880fc1c7320a8c68de3f3f84f5cc07af415357ab/app/portal.js';
+import { PortalApp } from './portal.js';
 
 await setupDB(IDB_CONFIG);
 initRoutesMap(ROUTES_MAP);
@@ -50,7 +50,8 @@ function App({ children })
 	}, [service]);
 	
 	if(!service || service === 'app') {
-		return html`<${PortalApp} ...${pageInfo} />`;
+		return html`<${PortalApp} ...${pageInfo} />
+		<${Code} data=${elapp.innerHTML} stringify=${false}></>`;
 	}
 	else {
 		
@@ -75,5 +76,6 @@ export function POSApp({ children })
 		</main>
 		<${InteractiveContainer} id="payment">
 			<${PaymentSection}/>
-		<//>`;
+		<//>
+	`;
 }

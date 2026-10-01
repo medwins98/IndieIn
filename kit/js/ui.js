@@ -135,7 +135,7 @@ export function BtnIcon({ icon = null, iconPos = "left", children, className = "
     return html`
         <button class=${`btn btn-icon ${className}`.trim()} type="button" aria-label=${resolvedAriaLabel} ...${attributes} >
             ${iconPos === "left" && icon ? html`<${Icon} iconName=${icon} />` : null}
-            ${children ? html`<span>${children}</span>` : null}
+            ${children ? children : null}
             ${iconPos === "right" && icon ? html`<${Icon} iconName=${icon} />` : null}
         </button>
     `;

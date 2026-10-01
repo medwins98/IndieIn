@@ -1,5 +1,4 @@
-button,
-.btn {
+button, .btn {
 	padding: var(--padding-y-button) var(--padding-x-button);
 	text-align: center;
 	text-decoration: none;
@@ -93,4 +92,10 @@ button:disabled,
 	cursor: not-allowed;
 	pointer-events: none;
 	box-shadow: none;
+}
+
+@media (max-width: 360px) {
+	.btn-text.hide-text {
+		display: none;
+	}
 }
