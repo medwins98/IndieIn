@@ -1,0 +1,184 @@
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	background-color: var(--bg-app);
+	color: var(--text-primary);
+	width: 100vw;
+	height: 100dvh;
+}
+
+/* ==========================================================================
+	 SECTION
+	 ========================================================================== */
+
+/* --- CATALOG / PRODUCT */
+
+.section.pos-catalog {
+	background: var(--bg-app);
+	max-width: 100vw;
+	flex: 1;
+}
+
+.section.pos-catalog>.section-content-wrapper {
+	flex: 1;
+	overflow: auto;
+}
+
+/* --- CART --- */
+
+.section.pos-cart {
+	height: 100dvh;
+	min-width: 300px;
+	overflow: hidden;
+	border-left: 1px solid var(--border-color-primary);
+}
+
+.section.pos-cart .close-btn {
+	display: none;
+}
+
+.section.pos-cart>.section-content-wrapper {
+	flex: 1;
+	padding: 1rem var(--padding-x-header);
+}
+
+/* ---- REPORT ---- */
+
+dialog.pos-report[open] {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	min-width: 360px;
+	border-radius: 0 !important;
+}
+
+dialog.pos-report .section.pos-report {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+dialog .section.pos-report>.section-content-wrapper {
+	flex: 1;
+	overflow-y: auto;
+}
+
+.section.pos-report {
+	width: 100%;
+	background-color: var(--bg-subtle);
+}
+
+.section.pos-report .section-header {
+	font-size: 1.25rem;
+	background-color: var(--bg-surface);
+}
+
+.section.pos-report>.section-content-wrapper {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem var(--padding-x-header);
+	gap: 1rem;
+}
+
+.section.pos-report .report-section-item {
+	padding: 0.25rem var(--padding-x-header);
+	background-color: var(--bg-surface);
+	border: 1px solid var(--border-color-primary);
+	border-radius: var(--radius-card);
+	width: 100%;
+	font-family: inherit;
+}
+
+.section.pos-report .report-section-item-title {
+	font-size: 1rem;
+	font-weight: 600;
+	padding: 1rem 0;
+	color: var(--text-primary);
+}
+
+.report-bar {
+	font-size: var(--font-size-base);
+	color: var(--text-primary);
+	background-color: var(--bg-surface);
+}
+
+.report-bar-header .title {
+	font-size: 0.875rem;
+	font-weight: 500;
+	text-align: center;
+	color: var(--text-primary);
+}
+
+
+.section.pos-transaction .section-header,
+.section.pos-cart .section-header {
+	height: 60px;
+}
+
+/* ==========================================================================
+	 COLUMN MAIN LAYOUT & COMPONENTS
+	 ========================================================================== */
+
+.pos-container {
+	display: flex;
+	height: 100dvh;
+}
+
+.tab-container.pos-category {
+	display: flex;
+	gap: 0.5rem;
+	padding: 0.75rem var(--padding-x-header);
+	overflow-x: auto;
+	white-space: nowrap;
+	background: var(--bg-surface);
+	border-bottom: 1px solid var(--border-color-primary);
+}
+
+.catalog-to-cart-btn {
+	position: fixed;
+	bottom: 1rem;
+	padding: 1.25rem;
+	width: 100%;
+	display: none;
+}
+
+/* --- CART / RECEIPT --- */
+
+.cart-footer {
+	padding: 1.25rem;
+	border-top: 1px solid var(--border-color-primary);
+	background-color: var(--bg-app);
+}
+
+.summary-total {
+	font-size: var(--font-size-md);
+	font-weight: 700;
+	color: var(--text-primary);
+	margin-top: 0.5rem;
+	margin-bottom: 0.875rem;
+	padding-top: 0.5rem;
+	border-top: 1px dashed var(--border-color-secondary);
+}
+
+/* ==========================================================================
+	 RESPONSIVE & OVERLAYS
+	 ========================================================================== */
+
+@media (max-width: 755px) {
+
+	.section.pos-cart .close-btn,
+	.catalog-to-cart-btn {
+		display: block;
+	}
+
+	.section.pos-cart {
+		position: initial;
+	}
+}
+
+@media (min-width: 756px) {
+	.quickview {
+		position: initial;
+	}
+}

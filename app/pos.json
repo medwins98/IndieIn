@@ -1,0 +1,17 @@
+{
+    "name": "Point of Sales",
+    "short_name": "POS",
+    "start_url": "../index.html?p=app/pos",
+    "scope": "../",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#2196F3",
+    "icons": [
+        {
+            "src": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhVLm1hjWd1J_vT1oroupnfbHIcMY_xr7wJtl3L1v35PQXagOrO5tVDtkukDrfS9I2NN7nk3tHAHGZwWbsDV10kgr7djPkwjM-_ss0rDFBc78FsFYiXQ4labql6xSYTl7iGTQ9UpGTizyh8QoRTZ15lqMpHOEDgix7Yobj_OmWipFgM6aEesShOzf_gH8PE/s192/indiein.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

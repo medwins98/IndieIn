@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>IndieIn</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="./kit/css/var.css" />
+	<link rel="stylesheet" href="./kit/css/btn.css" />
+	<link rel="stylesheet" href="./kit/css/form.css" />
+	<link rel="stylesheet" href="./kit/css/section.css" />
+	<link rel="stylesheet" href="./kit/css/components.css" />
+	<link rel="stylesheet" href="./kit/css/utils.css" />
+	<link id="dynamic-manifest" rel="manifest" href="./manifest.json" />
+	<script type="importmap">
+		{
+			"imports": {
+				"importmap": "./app/importmap.js",
+				"pos": "./app/pos/bundle.js"
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div id="app"></div>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		const rawPath = urlParams.get('p') || window.location.pathname;
+
+		let appType = 'home';
+		if (rawPath.includes('/app/pos') || rawPath === '/pos') appType = 'pos';
+		else if (rawPath.includes('/app/dms')) appType = 'dms';
+
+		const configs = {
+			pos: { title: 'POS - Point of Sales', color: '#2196F3', manifest: './app/pos.json' },
+			dms: { title: 'DMS - Document Management', color: '#4CAF50', manifest: './app/dms.json' },
+			home: { title: 'IndieIn', color: '#333333', manifest: './manifest.json' }
+		};
+
+		const currentConfig = configs[appType] || configs.home;
+
+		// Set title dan manifest dinamis
+		document.title = currentConfig.title;
+		document.getElementById('dynamic-manifest').setAttribute('href', currentConfig.manifest);
+
+		/* if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('./sw.js')
+					.then((reg) => console.log('Service Worker Global terdaftar:', reg.scope));
+			});
+		} */
+	</script>
+
+	<script src="./app/field-change-handlers.js"></script>
+	<script src="./app/form-submit-handlers.js"></script>
+	<script src="./app/config.js"></script>
+	<script src="./app/routes.js"></script>
+	<script src="./app/lang.js"></script>
+	<script src="./kit/js/qris.js"></script>
+	<script src="./kit/js/utils.js"></script>
+	<script src="./3rd/qrcode.min.js"></script>
+	<script type="module" src="./app/main.js"></script>
+</body>
+
+</html>
